@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+        referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>TASK✔</title>
+</head>
+
+<body>
+    <header class="bg-gray-700 py-5 ">
+        <!-- top -->
+        <div class="container mx-auto">
+            <div class="flex justify-between  ">
+                <div class="text-xl font-bold text-white">Where in the world?</div>
+                <div id="mode" class="px-2 flex gap-2">
+                    <span id="moon" class="text-xl font-semibold text-white rounded-lg border-2">
+                        <i class="fa-solid fa-moon p-1"></i>
+                    </span>
+                    <span id="sun" class="hidden text-xl font-semibold text-white rounded-lg border-2">
+                        <i class="fa-regular fa-sun  p-1"></i>
+                    </span>
+                    <span class="text-xl font-semibold text-white ">Dark mode</span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- middle -->
+    <main class="">
+        <!-- <div class="container mx-auto"> -->
+        <!-- top middle -->
+        <div class="flex flex-col justify-center ">
+            <div class="flex justify-between bg-black p-3">
+                <div class="flex justify-center gap-4">
+                    <input id="input" type="text"
+                        class="h-14 border-2 border-white  p-3 rounded bg-gray-700 text-white text-xl"
+                        placeholder="Search for country">
+                    <button id="btn"
+                        class="border-2	border-black p-3 rounded text-white border-white text-xl">Search</button>
+                </div>
+                <select class="border-white w-40  bg-gray-700 text-white text-center">
+                    <option value="" class="text-white bg-gray-700 text-center">Asia</option>
+                    <option value="" class="text-white bg-gray-700 text-center">Avrasiya</option>
+                    <option value="" class="text-white bg-gray-700 text-center">Avropa</option>
+                    <option value="" class="text-white bg-gray-700 text-center">Avstraliya</option>
+                </select>
+            </div>
+            <!-- bottom middle -->
+            <div id="root" class="grid grid-cols-4 gap-5 p-3 text-center"></div>
+        </div>
+
+    </main>
+
+    <!-- <script type="module">
+        import jsonServer from "https://cdn.jsdelivr.net/npm/json-server@1.0.0-beta.1/+esm";
+      </script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.2/axios.min.js"
+        integrity="sha512-JSCFHhKDilTRRXe9ak/FJ28dcpOJxzQaCd3Xg8MyF6XFjODhy/YMCM8HW0TFDckNHWUewW+kfvhin43hKtJxAw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./app.js"></script>
+</body>
+
+</html>
