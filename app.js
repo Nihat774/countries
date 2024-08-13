@@ -21,25 +21,16 @@ async function getData() {
   }
 }
 // ?/* <div class='loader'></div> */
-// root.innerHTML += "<div class='flex place-items-center text-xl'>Yüklənir...</div>"
+root.innerHTML += `<div class='grid place-items-center h-96 '>
+<p class="text-2xl">Biraz Gözləyin...</p>
+</div>`
 //
 
 async function writeData() {
-
   const countries = await getData();
-  function foundCountry() {
-    // preventDefault();
-    if (input.value == "") {
-      alert("Ölkə daxil edin!");
-    }
-    countries.filter((country) => {
-
-      const countryName = country.name.common.toUpperCase();
-
-      const inputValueUpper = input.value.toUpperCase();
-
-      if (countryName == inputValueUpper) {
-        root.innerHTML += `
+  root.innerHTML = ""
+  countries.map((country) => {
+    root.innerHTML += `
       <div id='box' class="border-2  p-2">
       <div class='title flex justify-center'><img class='w-full h-40' src='${country.flags.png}'></img></div>
       <h2 class='p-1'>Ölkənin adı : ${country.name.common}</h2>
@@ -47,33 +38,47 @@ async function writeData() {
       <p class='p-1'>Əhali sayı : ${country.population}</p>     
       </div>
       `;
-        input.value = ""
-      }
-    })
-  }
-  btn.addEventListener('click', foundCountry)
-
+  })
 }
 writeData()
-const box = document.getElementById("box")
-const moon = document.getElementById("moon")
-const sun = document.getElementById("sun");
-const mode = document.getElementById("mode")
 
-function darkMode() {
-  sun.style.display = "block"
-  moon.style.display = "none" 
-  root.style.backgroundColor = "black"
-  root.style.color = "white"
+async function foundCountry() {
+  root.innerHTML = ""
+  const countries = await getData();
+  countries.filter((country) => {
+    const countryName = country.name.common.toUpperCase();
+    const inputValueUpper = input.value.toUpperCase();
+    if (countryName == inputValueUpper) {
+      
+      root.innerHTML += `
+      <div id='box' class="border-2  p-2">
+      <div class='title flex justify-center'><img class='w-full h-40' src='${country.flags.png}'></img></div>
+      <h2 class='p-1'>Ölkənin adı : ${country.name.common}</h2>
+      <p class="p-1">Paytaxt : ${country.capital}</p>
+      <p class='p-1'>Əhali sayı : ${country.population}</p>     
+      </div>
+      `;
+      input.value = ""
+    }
+  })
 }
+btn.addEventListener('click', foundCountry)
 
+writeData()
 function whiteMode() {
   sun.style.display = "none"
-  moon.style.display = "block" 
+  moon.style.display = "block"
   root.style.backgroundColor = "white"
   root.style.color = "black"
 }
 
-mode.addEventListener("dblclick",whiteMode)
+function darkMode() {
+  moon.style.display = "none"
+  sun.style.display = "block"
+  root.style.backgroundColor = "black"
+  root.style.color = "white"
+}
+
+mode.addEventListener("dblclick", whiteMode)
 
 mode.addEventListener("click", darkMode)
